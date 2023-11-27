@@ -1,0 +1,23 @@
+name: Deploy static content to Pages
+on:
+  push:
+    branches:
+      - master
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chcekout
+        uses: actions/checkout@v2
+      - name: Deploy file
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: home562576484.1and1-data.host
+          FTP_USERNAME: ${{secrets.ftp_username}}
+          FTP_PASSWORD: ${{ secrets.ftp_password }}
+          local_path: './*'
+          PORT: 22
+          METHOD: sftp
+          remote_path: '/Riship711/Lab-5-Rishi-Patel/'
+          sftp_only: true
