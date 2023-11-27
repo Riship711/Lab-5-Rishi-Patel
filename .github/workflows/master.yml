@@ -1,14 +1,17 @@
+# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
+
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - master
+    branches: ["main"]
 jobs:
+  # Single deploy job since we're just deploying
   web-deploy:
-    name: Deploy
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Chcekout
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy file
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
@@ -19,5 +22,5 @@ jobs:
           local_path: './*'
           PORT: 22
           METHOD: sftp
-          remote_path: '/Riship711/Lab-5-Rishi-Patel/'
+          remote_path: '/site/IS436/lab5/shiva/'
           sftp_only: true
